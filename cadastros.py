@@ -30,13 +30,16 @@ def listarPessoas():
     print(dadosSalvos)
 
 def buscarPessoas():
-    pessoa = input("Digite o nome da pessoa: ")
+    pessoa = input("Digite o nome da pessoa: ").strip().lower()
+
     with open(caminho, "r") as arquivo:
-        usuarios_existentes = arquivo.read()
-    if pessoa in usuarios_existentes:
+        linhas = [linha.strip().lower() for linha in arquivo]
+
+    if pessoa in linhas:
         print(f"Usuário {pessoa} existente")
     else:
         print(f"Usuário {pessoa} inexistente")
+
 
 def excluirPessoa():
     pessoa = input("Digite o nome da pessoa: ").strip().lower()
